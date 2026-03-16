@@ -51,11 +51,6 @@ jobs:
           output-file: README.md
           output-format: markdown
 
-      - name: Run terraform test
-        run: terraform test
-
-      # Checkov and Trivy are now run via pre-built actions above
-
       - name: Check for diffs
         run: |
           terraform plan -detailed-exitcode || exit 1
