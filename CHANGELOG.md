@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.0...v0.3.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* update project_id formatting in README.md ([b6e5c9c](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/b6e5c9ceaea166e0bf8e41beabb3ac942015c2c5))
+
 ## [0.3.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.2.1...v0.3.0) (2026-03-16)
 
 
