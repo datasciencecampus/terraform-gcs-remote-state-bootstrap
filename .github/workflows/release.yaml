@@ -21,5 +21,6 @@ jobs:
           package-name: terraform-gcs-remote-state-bootstrap
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
+          extra-files: README.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -12,8 +12,8 @@ This module creates a Google Cloud Storage bucket for remote Terraform state, pr
 
 ```hcl
 module "remote_state_bootstrap" {
-  source  = "github.com/datasciencecampus/rst"
-  version = "<MODULE_VERSION>" # e.g. "1.0.0"
+  source  = "github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap"
+  version = "v0.2.1"
 
   project_id                        = "your-gcp-project-id"           # Replace with your GCP project
   state_bucket_name                 = "your-tf-state-bucket"
