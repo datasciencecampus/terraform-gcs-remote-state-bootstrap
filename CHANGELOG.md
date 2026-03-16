@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.2.0...v0.2.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* correct CODEOWNERS syntax by adding missing '@' symbol ([0a66a41](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/0a66a4143948431dc88e503eb6cd3f265451a7fa))
+
 ## [0.2.0](https://github.com/datasciencecampus/rst/compare/v0.1.0...v0.2.0) (2026-03-16)
 
 
