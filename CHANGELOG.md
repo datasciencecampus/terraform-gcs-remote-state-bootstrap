@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.2...v0.3.3) (2026-03-16)
+
+
+### Bug Fixes
+
+* remove pull_request trigger and update version placeholder in README ([9895bb2](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/9895bb22dda615e25b5fe0243e1a9eef727a2e88))
+
 ## [0.3.2](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.1...v0.3.2) (2026-03-16)
 
 
