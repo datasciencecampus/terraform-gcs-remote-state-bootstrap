@@ -1,4 +1,10 @@
+
 name: CI
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: read
 
 on:
   push:
