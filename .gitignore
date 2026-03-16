@@ -1,0 +1,28 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Crash logs
+crash.log
+
+# Sensitive files
+configs/secrets.baseline
+
+# Local overrides
+*.tfvars
+*.tfvars.json
+
+# Ignore editor files
+*.swp
+*.swo
+.idea/
+.vscode/
+.DS_Store
+
+# Ignore plan files
+*.plan
+
+# Ignore output files
+output/
