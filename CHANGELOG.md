@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v1.1.0...v1.1.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* add depends_on for IAM members to ensure resource dependencies are respected ([6d839de](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/6d839deaebb861c6162ce16d342b96e9d9b5e6ca))
+
 ## [1.1.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v1.0.1...v1.1.0) (2026-03-16)
 
 
