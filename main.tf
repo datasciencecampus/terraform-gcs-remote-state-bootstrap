@@ -129,5 +129,5 @@ resource "google_storage_bucket_iam_member" "logging_admin" {
 resource "google_kms_crypto_key_iam_member" "storage_service_account" {
   crypto_key_id = var.kms_key_resource_name
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-  member        = "service-${data.google_project.current.number}@gs-project-accounts.iam.gserviceaccount.com"
+  member        = "serviceAccount:service-${data.google_project.current.number}@gs-project-accounts.iam.gserviceaccount.com"
 }
