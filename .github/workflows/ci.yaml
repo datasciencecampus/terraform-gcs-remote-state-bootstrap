@@ -41,7 +41,7 @@ jobs:
         run: terraform fmt -check -recursive
 
       - name: Run terraform validate
-        run: terraform validate
+        run: terraform validate $(find . -type f -name '*.tf' -o -name '*.tfvars')
 
       - name: Run terraform docs
         uses: terraform-docs/gh-actions@v1.4.1
