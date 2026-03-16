@@ -3,14 +3,16 @@ variable "project_id" {
   type        = string
 }
 
-variable "state_bucket_name" {
+variable "state_bucket_name_override" {
   description = "Name of the remote state bucket."
   type        = string
+  default     = ""
 }
 
-variable "logging_bucket_name" {
+variable "logging_bucket_name_override" {
   description = "Name of the logging bucket."
   type        = string
+  default     = ""
 }
 
 variable "bucket_location" {
@@ -19,14 +21,16 @@ variable "bucket_location" {
   default     = "europe-west2"
 }
 
-variable "kms_key_ring_name" {
+variable "kms_key_ring_name_override" {
   description = "Name of the KMS key ring."
   type        = string
+  default     = ""
 }
 
-variable "kms_crypto_key_name" {
+variable "kms_crypto_key_name_override" {
   description = "Name of the KMS crypto key."
   type        = string
+  default     = ""
 }
 
 variable "kms_location" {
