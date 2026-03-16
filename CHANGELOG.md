@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/datasciencecampus/rst/compare/v0.1.0...v0.2.0) (2026-03-16)
+
+
+### Features
+
+* Add labels to storage buckets and define labels variable ([5f1ca46](https://github.com/datasciencecampus/rst/commit/5f1ca466a698258096c1b0eed9a8f797f3ec35e5))
+* Merge labels into local variable for storage buckets ([d107ef5](https://github.com/datasciencecampus/rst/commit/d107ef533b84319e11204f54ba05524f5198d316))
+
 ## 0.1.0 (2026-03-16)
 
 
