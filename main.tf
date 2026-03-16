@@ -7,7 +7,7 @@ data "google_project" "current" {
 locals {
   labels = merge(
     {
-      module = "datasciencecampus/terraform-gcs-remote-state-bootstrap"
+      module = "terraform-gcs-remote-state-bootstrap"
     },
     var.labels
   )
