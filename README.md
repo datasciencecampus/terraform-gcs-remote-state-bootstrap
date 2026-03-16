@@ -1,4 +1,4 @@
-# remote_state_bucket Terraform Module
+# terraform-gcs-remote-state-bootstrap
 
 This module creates a Google Cloud Storage bucket for remote Terraform state, protected with a Customer-Managed Encryption Key (CMEK), and a separate logging bucket.
 
