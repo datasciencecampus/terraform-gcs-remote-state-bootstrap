@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.3...v0.4.0) (2026-03-16)
+
+
+### Features
+
+* implement dynamic naming conventions for state and logging buckets ([ba3938b](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/ba3938bcc21cddc406ac2071b7f645a0f0829abc))
+
 ## [0.3.3](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.2...v0.3.3) (2026-03-16)
 
 
