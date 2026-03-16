@@ -42,9 +42,8 @@ jobs:
 
       - name: Run terraform validate
         run: |
-          for dir in $(find . -maxdepth 1 -type d ! -name 'tests' ! -name '.git'); do
-            terraform validate $dir
-          done
+          terraform init -backend=false
+          terraform validate
       - name: Run terraform docs
         uses: terraform-docs/gh-actions@v1.4.1
         with:
