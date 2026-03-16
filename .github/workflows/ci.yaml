@@ -35,15 +35,16 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v4
         with:
-          terraform_version: 1.6.0
+          terraform_version: 1.14.7
 
       - name: Run terraform fmt
         run: terraform fmt -check -recursive
 
       - name: Run terraform validate
         run: |
-          find . -type f -name "*.tf" | grep -v "./tests/" | xargs -n1 dirname | sort -u | xargs -I {} terraform validate {}
-
+          for dir in $(find . -maxdepth 1 -type d ! -name 'tests' ! -name '.git'); do
+            terraform validate $dir
+          done
       - name: Run terraform docs
         uses: terraform-docs/gh-actions@v1.4.1
         with:
