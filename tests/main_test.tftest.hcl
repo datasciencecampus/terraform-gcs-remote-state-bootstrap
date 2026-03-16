@@ -7,7 +7,7 @@ variables {
   bucket_location                      = "europe-west2"
   kms_key_ring_name                    = "my-key-ring"
   kms_crypto_key_name                  = "my-crypto-key"
-  kms_location                         = "global"
+  kms_location                         = "europe-west2"
   state_bucket_name                    = "my-state-bucket"
   logging_bucket_name                  = "my-logging-bucket"
   state_bucket_version_retention_count = 5
