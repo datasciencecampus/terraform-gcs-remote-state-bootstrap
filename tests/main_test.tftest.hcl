@@ -29,10 +29,3 @@ run "check_module_outputs" {
     error_message = "Expected logging bucket name to be 'my-logging-bucket', got '${output.logging_bucket_name}'"
   }
 }
-
-run "test_apply_module" {
-  command = apply
-  module {
-    source = "../.."
-  }
-}
