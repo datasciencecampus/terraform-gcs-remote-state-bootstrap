@@ -1,5 +1,13 @@
 // Terraform module for remote state bucket with CMEK and logging bucket
 
+locals {
+  labels = merge(
+    {
+      module = "datasciencecampus/terraform-gcs-remote-state-bootstrap"
+    },
+    var.labels
+  )
+}
 
 terraform {
   required_version = ">= 1.6.0"
@@ -45,7 +53,7 @@ resource "google_storage_bucket" "state" {
   public_access_prevention    = "enforced"
   uniform_bucket_level_access = true
 
-  labels = var.labels
+  labels = local.labels
 
   encryption {
     default_kms_key_name = google_kms_crypto_key.state.id
@@ -87,7 +95,7 @@ resource "google_storage_bucket" "logging" {
     default_kms_key_name = google_kms_crypto_key.state.id
   }
 
-  labels = var.labels
+  labels = local.labels
 
   lifecycle_rule {
     action {
