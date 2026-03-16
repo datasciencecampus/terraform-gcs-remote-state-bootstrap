@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v1.0.1...v1.1.0) (2026-03-16)
+
+
+### Features
+
+* add KMS access for Cloud Storage service account ([3b91f90](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/3b91f90e1a43238626454e5c873dee606f0b33dd))
+
 ## [1.0.1](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v1.0.0...v1.0.1) (2026-03-16)
 
 
