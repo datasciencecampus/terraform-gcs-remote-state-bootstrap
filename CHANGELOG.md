@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.4.0...v1.0.0) (2026-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* This breaks the functionality of previous versions as this no longer provisions the KMS within the module.
+
+### Code Refactoring
+
+* update KMS key management by removing hardcoded variables and introducing a resource name variable ([6d3e896](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/6d3e896b3f16ab21529214919d7cbf0d19c95c84))
+
 ## [0.4.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.3...v0.4.0) (2026-03-16)
 
 
