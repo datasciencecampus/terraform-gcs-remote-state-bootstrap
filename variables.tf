@@ -32,7 +32,7 @@ variable "kms_crypto_key_name" {
 variable "kms_location" {
   description = "Location for the KMS key ring."
   type        = string
-  default     = "eurpope-west2"
+  default     = "europe-west2"
 }
 
 variable "state_bucket_version_retention_count" {

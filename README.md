@@ -3,23 +3,34 @@
 This module creates a Google Cloud Storage bucket for remote Terraform state, protected with a Customer-Managed Encryption Key (CMEK), and a separate logging bucket.
 
 ## Resources
+
 - GCS bucket for remote state
 - CMEK (KMS key ring and crypto key)
 - Logging bucket
 
 ## Usage
+
 ```hcl
-module "remote_state_bucket" {
-  source                = "./modules/remote_state_bucket"
-  project_id            = "your-gcp-project-id"
-  state_bucket_name     = "your-tf-state-bucket"
-  logging_bucket_name   = "your-tf-logging-bucket"
-  bucket_location       = "US"
-  kms_key_ring_name     = "tf-state-keyring"
-  kms_crypto_key_name   = "tf-state-key"
-  kms_location          = "global"
+module "remote_state_bootstrap" {
+  source  = "github.com/datasciencecampus/rst"
+  version = "<MODULE_VERSION>" # e.g. "1.0.0"
+
+  project_id                        = "your-gcp-project-id"           # Replace with your GCP project
+  state_bucket_name                 = "your-tf-state-bucket"
+  logging_bucket_name               = "your-tf-logging-bucket"
+  kms_key_ring_name                 = "tf-state-keyring"
+  kms_crypto_key_name               = "tf-state-key"
+  storage_object_viewer_principal   = "user:someone@example.com"
+  storage_object_admin_principal    = "user:someone@example.com"
+  # ...add any other required or optional variables
 }
 ```
+
+> **Note:**
+>
+> - Replace all placeholder values with your actual GCP project and resource names.
+> - You must authenticate with Google Cloud and have the necessary permissions to create resources.
+> - Do not commit real credentials or sensitive data to your repository.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -60,7 +71,7 @@ No modules.
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Whether to force destroy the buckets (deleting all objects). Use with caution. | `bool` | `false` | no |
 | <a name="input_kms_crypto_key_name"></a> [kms\_crypto\_key\_name](#input\_kms\_crypto\_key\_name) | Name of the KMS crypto key. | `string` | n/a | yes |
 | <a name="input_kms_key_ring_name"></a> [kms\_key\_ring\_name](#input\_kms\_key\_ring\_name) | Name of the KMS key ring. | `string` | n/a | yes |
-| <a name="input_kms_location"></a> [kms\_location](#input\_kms\_location) | Location for the KMS key ring. | `string` | `"eurpope-west2"` | no |
+| <a name="input_kms_location"></a> [kms\_location](#input\_kms\_location) | Location for the KMS key ring. | `string` | `"europe-west2"` | no |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the logging bucket. | `string` | n/a | yes |
 | <a name="input_logging_bucket_retention_days"></a> [logging\_bucket\_retention\_days](#input\_logging\_bucket\_retention\_days) | Number of days to retain objects in the logging bucket before automatic deletion. | `number` | `30` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The GCP project ID. | `string` | n/a | yes |
