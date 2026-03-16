@@ -42,7 +42,7 @@ jobs:
 
       - name: Run terraform validate
         run: |
-          find . -type f -name "*.tf" ! -path "./tests/*" -exec dirname {} \; | sort -u | xargs -I {} terraform validate {}
+          find . -type f -name "*.tf" | grep -v "./tests/" | xargs -n1 dirname | sort -u | xargs -I {} terraform validate {}
 
       - name: Run terraform docs
         uses: terraform-docs/gh-actions@v1.4.1
