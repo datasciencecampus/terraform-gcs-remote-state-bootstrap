@@ -13,8 +13,6 @@ locals {
   )
   remote_state_bucket_name = var.state_bucket_name_override != "" ? var.state_bucket_name_override : "state__${data.google_project.current.number}"
   logging_bucket_name      = var.logging_bucket_name_override != "" ? var.logging_bucket_name_override : "logging__${data.google_project.current.number}"
-  kms_key_ring_name        = var.kms_key_ring_name_override != "" ? var.kms_key_ring_name_override : "state-key-ring__${data.google_project.current.number}"
-  kms_crypto_key_name      = var.kms_crypto_key_name_override != "" ? var.kms_crypto_key_name_override : "state-crypto-key__${data.google_project.current.number}"
 }
 
 terraform {
@@ -32,25 +30,6 @@ provider "google" {
   region  = var.bucket_location
 }
 
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_key_ring
-resource "google_kms_key_ring" "state" {
-  name     = local.kms_key_ring_name
-  location = var.kms_location
-  project  = var.project_id
-}
-
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_crypto_key
-resource "google_kms_crypto_key" "state" {
-  name            = local.kms_crypto_key_name
-  key_ring        = google_kms_key_ring.state.id
-  rotation_period = "100000s"
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-
 # https://registry.terraform.io/providers/hashicorp/google/7.23.0/docs/resources/storage_bucket#argument-reference
 resource "google_storage_bucket" "state" {
   name     = local.remote_state_bucket_name
@@ -64,7 +43,7 @@ resource "google_storage_bucket" "state" {
   labels = local.labels
 
   encryption {
-    default_kms_key_name = google_kms_crypto_key.state.id
+    default_kms_key_name = var.kms_key_resource_name
   }
 
   versioning {
@@ -100,7 +79,7 @@ resource "google_storage_bucket" "logging" {
   uniform_bucket_level_access = true
 
   encryption {
-    default_kms_key_name = google_kms_crypto_key.state.id
+    default_kms_key_name = var.kms_key_resource_name
   }
 
   labels = local.labels

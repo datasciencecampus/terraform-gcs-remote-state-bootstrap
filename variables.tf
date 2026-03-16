@@ -21,22 +21,10 @@ variable "bucket_location" {
   default     = "europe-west2"
 }
 
-variable "kms_key_ring_name_override" {
-  description = "Name of the KMS key ring."
+variable "kms_key_resource_name" {
+  description = "The full resource name of the KMS key to use for bucket encryption, e.g. projects/[PROJECT_ID]/locations/[REGION]/keyRings/[KEY_RING_NAME]/cryptoKeys/[KEY_NAME]."
   type        = string
-  default     = ""
-}
-
-variable "kms_crypto_key_name_override" {
-  description = "Name of the KMS crypto key."
-  type        = string
-  default     = ""
-}
-
-variable "kms_location" {
-  description = "Location for the KMS key ring."
-  type        = string
-  default     = "europe-west2"
+  nullable    = false
 }
 
 variable "state_bucket_version_retention_count" {

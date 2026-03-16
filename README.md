@@ -34,6 +34,25 @@ resource "google_project_service" "required_services" {
 }
 ```
 
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_key_ring
+resource "google_kms_key_ring" "state" {
+  name     = local.kms_key_ring_name
+  location = var.kms_location
+  project  = var.project_id
+}
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_crypto_key
+resource "google_kms_crypto_key" "state" {
+  name            = local.kms_crypto_key_name
+  key_ring        = google_kms_key_ring.state.id
+  rotation_period = "100000s"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
 ---
 
 ## Usage Example
@@ -80,8 +99,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google_kms_crypto_key.state](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_crypto_key) | resource |
-| [google_kms_key_ring.state](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_key_ring) | resource |
 | [google_storage_bucket.logging](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket) | resource |
 | [google_storage_bucket.state](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket) | resource |
 | [google_storage_bucket_iam_member.logging_admin](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam_member) | resource |
@@ -96,9 +113,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_bucket_location"></a> [bucket\_location](#input\_bucket\_location) | Location for the buckets. | `string` | `"europe-west2"` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Whether to force destroy the buckets (deleting all objects). Use with caution. | `bool` | `false` | no |
-| <a name="input_kms_crypto_key_name_override"></a> [kms\_crypto\_key\_name\_override](#input\_kms\_crypto\_key\_name\_override) | Name of the KMS crypto key. | `string` | `""` | no |
-| <a name="input_kms_key_ring_name_override"></a> [kms\_key\_ring\_name\_override](#input\_kms\_key\_ring\_name\_override) | Name of the KMS key ring. | `string` | `""` | no |
-| <a name="input_kms_location"></a> [kms\_location](#input\_kms\_location) | Location for the KMS key ring. | `string` | `"europe-west2"` | no |
+| <a name="input_kms_key_resource_name"></a> [kms\_key\_resource\_name](#input\_kms\_key\_resource\_name) | The full resource name of the KMS key to use for bucket encryption, e.g. projects/[PROJECT\_ID]/locations/[REGION]/keyRings/[KEY\_RING\_NAME]/cryptoKeys/[KEY\_NAME]. | `string` | n/a | yes |
 | <a name="input_labels"></a> [labels](#input\_labels) | A map of labels to apply to the buckets. | `map(string)` | `{}` | no |
 | <a name="input_logging_bucket_name_override"></a> [logging\_bucket\_name\_override](#input\_logging\_bucket\_name\_override) | Name of the logging bucket. | `string` | `""` | no |
 | <a name="input_logging_bucket_retention_days"></a> [logging\_bucket\_retention\_days](#input\_logging\_bucket\_retention\_days) | Number of days to retain objects in the logging bucket before automatic deletion. | `number` | `30` | no |
@@ -112,8 +127,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_kms_crypto_key_id"></a> [kms\_crypto\_key\_id](#output\_kms\_crypto\_key\_id) | The ID of the KMS crypto key. |
-| <a name="output_kms_key_ring_id"></a> [kms\_key\_ring\_id](#output\_kms\_key\_ring\_id) | The ID of the KMS key ring. |
 | <a name="output_logging_bucket_name"></a> [logging\_bucket\_name](#output\_logging\_bucket\_name) | The name of the logging bucket. |
 | <a name="output_state_bucket_name"></a> [state\_bucket\_name](#output\_state\_bucket\_name) | The name of the remote state bucket. |
 <!-- END_TF_DOCS -->
