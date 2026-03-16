@@ -15,7 +15,7 @@ module "remote_state_bootstrap" {
   source  = "github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap"
   version = "v0.2.1"
 
-  project_id                        = "your-gcp-project-id"           # Replace with your GCP project
+  project_id                        = "your-gcp-project-id"
   state_bucket_name                 = "your-tf-state-bucket"
   logging_bucket_name               = "your-tf-logging-bucket"
   kms_key_ring_name                 = "tf-state-keyring"
