@@ -6,18 +6,21 @@
 This module provisions:
 
 - A Google Cloud Storage bucket for remote Terraform state
-- A Customer-Managed Encryption Key (CMEK) using Google Cloud KMS (key ring and crypto key)
 - A separate logging bucket for audit/access logs
+- Encryption of the state bucket using a Customer-Managed Encryption Key (CMEK) via Google Cloud KMS
+
+**Important:** You must have an existing KMS key (crypto key) set up in your project and provide its full resource ID to this module. The module does not create the KMS key for you. See the `kms_key_resource_name` input for the required format.
 
 ---
 
-## Required Google Cloud Services
+## Prerequisites
 
-Before using this module, you must activate the following APIs in your GCP project:
+Before using this module, you must:
 
-- Cloud Storage API (`storage.googleapis.com`)
-- Cloud KMS API (`cloudkms.googleapis.com`)
-- IAM API (`iam.googleapis.com`)
+- Create a KMS key ring and crypto key in your GCP project. Note the full resource name of the crypto key (e.g., `projects/[PROJECT_ID]/locations/[REGION]/keyRings/[KEY_RING_NAME]/cryptoKeys/[KEY_NAME]`).
+- Activate the following APIs in your GCP project:
+  - Cloud Storage API (`storage.googleapis.com`)
+  - IAM API (`iam.googleapis.com`)
 
 **Recommended:** Enable these APIs via Terraform:
 
@@ -25,7 +28,6 @@ Before using this module, you must activate the following APIs in your GCP proje
 resource "google_project_service" "required_services" {
   for_each = toset([
     "storage.googleapis.com",
-    "cloudkms.googleapis.com",
     "iam.googleapis.com"
   ])
   project = var.project_id
@@ -34,24 +36,21 @@ resource "google_project_service" "required_services" {
 }
 ```
 
+# Example: Creating a KMS key (if you do not already have one)
 
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_key_ring
+```hcl
 resource "google_kms_key_ring" "state" {
-  name     = local.kms_key_ring_name
-  location = var.kms_location
+  name     = "your-key-ring"
+  location = "europe-west2"
   project  = var.project_id
 }
 
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_crypto_key
 resource "google_kms_crypto_key" "state" {
-  name            = local.kms_crypto_key_name
+  name            = "your-crypto-key"
   key_ring        = google_kms_key_ring.state.id
   rotation_period = "100000s"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
+```
 
 ---
 
@@ -64,9 +63,10 @@ module "remote_state_bootstrap" {
   source  = "github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap"
   version = "{VERSION}"
 
-  project_id                      = "your-gcp-project-id"
+  project_id                      = "[YOUR_PROJECT_ID]"
   storage_object_viewer_principal = "user:someone@example.com"
   storage_object_admin_principal  = "user:someone@example.com"
+  kms_key_resource_name           = "projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING_NAME/cryptoKeys/KEY_NAME"
   # ...add any other required or optional variables
 }
 ```
