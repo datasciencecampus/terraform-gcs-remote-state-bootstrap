@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.1...v0.3.2) (2026-03-16)
+
+
+### Bug Fixes
+
+* update kms_location to match the specified region ([d24bfd7](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/d24bfd73f520ee60e8803b15b1b77303afe7cd1d))
+
 ## [0.3.1](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.3.0...v0.3.1) (2026-03-16)
 
 
