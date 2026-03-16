@@ -37,13 +37,17 @@ This project uses [terraform test](https://developer.hashicorp.com/terraform/tut
 
 **How to Run Tests:**
 
-You must provide a valid GCP project ID for testing. You can use any live test project you have access to. The project ID is passed as a variable to the test command:
+1. Copy the example secrets file and edit it to provide real values:
 
-```sh
-terraform test -var 'project_id=YOUR_TEST_PROJECT_ID'
-```
+  ```sh
+  cp tests/secrets.tfvars.example tests/secrets.tfvars
+  ```
 
-Replace `YOUR_TEST_PROJECT_ID` with your actual GCP project ID.
+2. Run the tests using your populated secrets file:
+
+  ```sh
+  terraform test -var-file=tests/secrets.tfvars
+  ```
 
 > **Note:**
 >
