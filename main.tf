@@ -45,6 +45,8 @@ resource "google_storage_bucket" "state" {
   public_access_prevention    = "enforced"
   uniform_bucket_level_access = true
 
+  labels = var.labels
+
   encryption {
     default_kms_key_name = google_kms_crypto_key.state.id
   }
@@ -84,6 +86,8 @@ resource "google_storage_bucket" "logging" {
   encryption {
     default_kms_key_name = google_kms_crypto_key.state.id
   }
+
+  labels = var.labels
 
   lifecycle_rule {
     action {

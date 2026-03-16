@@ -72,6 +72,7 @@ No modules.
 | <a name="input_kms_crypto_key_name"></a> [kms\_crypto\_key\_name](#input\_kms\_crypto\_key\_name) | Name of the KMS crypto key. | `string` | n/a | yes |
 | <a name="input_kms_key_ring_name"></a> [kms\_key\_ring\_name](#input\_kms\_key\_ring\_name) | Name of the KMS key ring. | `string` | n/a | yes |
 | <a name="input_kms_location"></a> [kms\_location](#input\_kms\_location) | Location for the KMS key ring. | `string` | `"europe-west2"` | no |
+| <a name="input_labels"></a> [labels](#input\_labels) | A map of labels to apply to the buckets. | `map(string)` | `{}` | no |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the logging bucket. | `string` | n/a | yes |
 | <a name="input_logging_bucket_retention_days"></a> [logging\_bucket\_retention\_days](#input\_logging\_bucket\_retention\_days) | Number of days to retain objects in the logging bucket before automatic deletion. | `number` | `30` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The GCP project ID. | `string` | n/a | yes |

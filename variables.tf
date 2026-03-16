@@ -83,3 +83,9 @@ variable "logging_bucket_retention_days" {
   type        = number
   default     = 30
 }
+
+variable "labels" {
+  description = "A map of labels to apply to the buckets."
+  type        = map(string)
+  default     = {}
+}
