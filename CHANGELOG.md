@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v1.0.0...v1.0.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* update module label to match repository name ([9b55a4d](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/commit/9b55a4dea9d031f8ba3fc10ec092e4589da3a316))
+
 ## [1.0.0](https://github.com/datasciencecampus/terraform-gcs-remote-state-bootstrap/compare/v0.4.0...v1.0.0) (2026-03-16)
 
 
