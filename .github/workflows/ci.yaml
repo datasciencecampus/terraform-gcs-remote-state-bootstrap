@@ -25,18 +25,19 @@ jobs:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
       - name: Run terraform fmt
         run: terraform fmt -recursive -check -diff
-  trivy:
-    name: trivy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Trivy scan
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
-        with:
-          scan-type: fs
-          scan-ref: .
-          trivy-config: configs/trivy.yaml
+  # TEMPORARILY DISABLED DUE TO SECURITY INCIDENT
+  # trivy:
+  #   name: trivy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+  #     - name: Trivy scan
+  #       uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+  #       with:
+  #         scan-type: fs
+  #         scan-ref: .
+  #         trivy-config: configs/trivy.yaml
   checkov:
     name: Checkov
     runs-on: ubuntu-latest
