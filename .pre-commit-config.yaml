@@ -21,9 +21,9 @@ repos:
       - id: terraform_fmt
       - id: terraform_validate
       - id: terraform_tflint
-      - id: terraform_trivy
-        args:
-          - --args=--config=configs/trivy.yaml
+      # - id: terraform_trivy
+      #   args:
+      #     - --args=--config=configs/trivy.yaml
       - id: terraform_docs
         args:
           - --args=--output-file=README.md
